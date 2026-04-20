@@ -70,6 +70,12 @@ def _make_compute_metrics(class_counts: np.ndarray, child_to_parent: np.ndarray,
         # outputs. Unwrap defensively.
         if isinstance(logits, (tuple, list)):
             logits = logits[0]
+        # Dataset returns both `labels` and `parent_labels`; HF Trainer then
+        # packs pred.label_ids as a tuple (child, parent). Grab just the
+        # child labels for classification metrics.
+        labels = pred.label_ids
+        if isinstance(labels, (tuple, list)):
+            labels = labels[0]
         # Our classifier concatenates [child_logits ; parent_logits] when a head
         # produces parent logits. Split back here. If only child logits are
         # present, logits has exactly n_children columns.
@@ -82,7 +88,7 @@ def _make_compute_metrics(class_counts: np.ndarray, child_to_parent: np.ndarray,
             y_pred_parent = None
         y_pred_child = np.argmax(child_logits, axis=1)
         m = compute_all_metrics(
-            y_true=pred.label_ids,
+            y_true=labels,
             y_pred_child=y_pred_child,
             y_pred_parent=y_pred_parent,
             class_counts=class_counts,
