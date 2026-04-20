@@ -62,15 +62,25 @@ class TrainArgs:
 
 
 def _make_compute_metrics(class_counts: np.ndarray, child_to_parent: np.ndarray, child_names: List[str]):
+    n_children = len(child_names)
+
     def compute_metrics(pred) -> Dict[str, float]:
         logits = pred.predictions
-        # If classifier returned a tuple (child_logits, parent_logits) pack both.
-        if isinstance(logits, tuple):
-            child_logits, parent_logits = logits
+        # Trainer may wrap predictions in a tuple when there are multiple model
+        # outputs. Unwrap defensively.
+        if isinstance(logits, (tuple, list)):
+            logits = logits[0]
+        # Our classifier concatenates [child_logits ; parent_logits] when a head
+        # produces parent logits. Split back here. If only child logits are
+        # present, logits has exactly n_children columns.
+        if logits.shape[1] > n_children:
+            child_logits = logits[:, :n_children]
+            parent_logits = logits[:, n_children:]
+            y_pred_parent = np.argmax(parent_logits, axis=1)
         else:
-            child_logits, parent_logits = logits, None
+            child_logits = logits
+            y_pred_parent = None
         y_pred_child = np.argmax(child_logits, axis=1)
-        y_pred_parent = np.argmax(parent_logits, axis=1) if parent_logits is not None else None
         m = compute_all_metrics(
             y_true=pred.label_ids,
             y_pred_child=y_pred_child,

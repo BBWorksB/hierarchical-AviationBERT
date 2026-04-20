@@ -152,9 +152,17 @@ class AviationBertClassifier(nn.Module):
                 ent = -(parent_probs * (parent_probs.clamp_min(1e-8)).log()).sum(dim=-1).mean()
                 loss = loss + self.tcr_weight * ent
 
+        # HF Trainer compatibility: pack output as a dict with only standard keys
+        # (loss, logits). For hierarchical heads we concatenate [child; parent]
+        # along the class dimension; compute_metrics splits it back. This avoids
+        # the NoneType error from missing parent_logits (FlatHead) and the
+        # "too many values to unpack" error from extra output keys.
+        if parent_logits is not None:
+            combined_logits = torch.cat([child_logits, parent_logits], dim=1)
+        else:
+            combined_logits = child_logits
+
         return {
             "loss": loss,
-            "logits": child_logits,
-            "parent_logits": parent_logits,
-            "extras": {k: v for k, v in out.items() if k not in {"child_logits", "parent_logits"}},
+            "logits": combined_logits,
         }

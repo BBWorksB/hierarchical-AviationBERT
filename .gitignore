@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+# Runs, checkpoints, and large artifacts
+runs/
+figures/
+aviation_bert_ckpt/
+tmp_smoke/
+*.pt
+*.pth
+*.safetensors
+pytorch_model.bin
+deliverables.zip
+# Env
+.env
+venv/
+.venv/
