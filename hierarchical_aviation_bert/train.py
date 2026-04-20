@@ -159,6 +159,7 @@ def train_one(args: TrainArgs) -> Dict[str, float]:
         report_to="none",
         save_total_limit=1,
         seed=args.seed,
+        save_safetensors=False,  # allow non-contiguous tensors (bert-tiny quirk)
     )
 
     compute_metrics = _make_compute_metrics(
