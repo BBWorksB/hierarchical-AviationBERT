@@ -1,0 +1,202 @@
+% Bibliography for "Hierarchical Transformer Architectures for ICAO ADREP
+% Aviation Incident Classification" (Team 30, 11-785).
+%
+% Entries are grouped by role:
+%   - Data + taxonomy
+%   - Domain-specific transformers
+%   - Domain-adaptive pretraining
+%   - Hierarchical text classification
+%   - Class imbalance / focal loss / long-tail learning
+%   - Foundational transformer references
+
+% ======================================================================
+% DATA + TAXONOMY
+% ======================================================================
+
+@misc{asn2024,
+  author       = {{Flight Safety Foundation}},
+  title        = {Aviation Safety Network (ASN) Database},
+  year         = {2024},
+  howpublished = {\url{https://aviation-safety.net}},
+  note         = {Accessed: 2026-04-20}
+}
+
+@techreport{icao_adrep2013,
+  author       = {{International Civil Aviation Organization}},
+  title        = {{ADREP} {T}axonomy {R}eference {S}heets (Doc 9756, Manual of Aircraft Accident and Incident Investigation)},
+  institution  = {ICAO},
+  year         = {2013},
+  address      = {Montreal, Canada}
+}
+
+@techreport{cicct2013,
+  author       = {{Commercial Aviation Safety Team} and {ICAO Common Taxonomy Team}},
+  title        = {Aviation Occurrence Categories -- Definitions and Usage Notes},
+  institution  = {CAST/ICAO Common Taxonomy Team (CICTT)},
+  year         = {2013},
+  url          = {https://www.icao.int/safety/airnavigation/AIG/Pages/ADREP-Taxonomies.aspx}
+}
+
+% ======================================================================
+% DOMAIN-SPECIFIC TRANSFORMERS
+% ======================================================================
+
+@inproceedings{jing2023bert,
+  author    = {Xiao Jing and Akul Chennakesavan and Chetan Chandra and Mayank V. Bendarkar and Michelle Kirby and Dimitri N. Mavris},
+  title     = {{BERT} for Aviation Text Classification},
+  booktitle = {AIAA AVIATION 2023 Forum},
+  year      = {2023},
+  pages     = {AIAA 2023--3438},
+  doi       = {10.2514/6.2023-3438}
+}
+
+@article{beltagy2019scibert,
+  author  = {Iz Beltagy and Kyle Lo and Arman Cohan},
+  title   = {{SciBERT}: A Pretrained Language Model for Scientific Text},
+  journal = {EMNLP},
+  year    = {2019}
+}
+
+@article{lee2020biobert,
+  author  = {Jinhyuk Lee and Wonjin Yoon and Sungdong Kim and Donghyeon Kim and Sunkyu Kim and Chan Ho So and Jaewoo Kang},
+  title   = {{BioBERT}: a pre-trained biomedical language representation model for biomedical text mining},
+  journal = {Bioinformatics},
+  volume  = {36},
+  number  = {4},
+  pages   = {1234--1240},
+  year    = {2020}
+}
+
+@article{chalkidis2020legalbert,
+  author  = {Ilias Chalkidis and Manos Fergadiotis and Prodromos Malakasiotis and Nikolaos Aletras and Ion Androutsopoulos},
+  title   = {{LEGAL-BERT}: The Muppets straight out of Law School},
+  journal = {Findings of EMNLP},
+  year    = {2020}
+}
+
+% ======================================================================
+% DOMAIN-ADAPTIVE PRETRAINING
+% ======================================================================
+
+@inproceedings{gururangan2020dont,
+  author    = {Suchin Gururangan and Ana Marasovi{\'c} and Swabha Swayamdipta and Kyle Lo and Iz Beltagy and Doug Downey and Noah A. Smith},
+  title     = {{D}on't {S}top {P}retraining: {A}dapt {L}anguage {M}odels to {D}omains and {T}asks},
+  booktitle = {ACL},
+  year      = {2020}
+}
+
+@article{howard2018ulmfit,
+  author  = {Jeremy Howard and Sebastian Ruder},
+  title   = {Universal Language Model Fine-tuning for Text Classification},
+  journal = {ACL},
+  year    = {2018}
+}
+
+% ======================================================================
+% HIERARCHICAL TEXT CLASSIFICATION
+% ======================================================================
+
+@inproceedings{zhou2020hierarchical,
+  author    = {Jie Zhou and Chunping Ma and Dingkun Long and Guangwei Xu and Ning Ding and Haoyu Zhang and Pengjun Xie and Gongshen Liu},
+  title     = {{H}ierarchy-aware {G}lobal {M}odel for {H}ierarchical {T}ext {C}lassification},
+  booktitle = {ACL},
+  year      = {2020}
+}
+
+@inproceedings{wehrmann2018hierarchical,
+  author    = {Jonatas Wehrmann and Ricardo Cerri and Rodrigo C. Barros},
+  title     = {Hierarchical Multi-Label Classification Networks},
+  booktitle = {ICML},
+  year      = {2018}
+}
+
+@article{silla2011survey,
+  author  = {Carlos N. Silla and Alex A. Freitas},
+  title   = {A survey of hierarchical classification across different application domains},
+  journal = {Data Mining and Knowledge Discovery},
+  volume  = {22},
+  year    = {2011},
+  pages   = {31--72}
+}
+
+@inproceedings{mao2019hier,
+  author    = {Yuning Mao and Jingjing Tian and Jiawei Han and Xiang Ren},
+  title     = {Hierarchical Text Classification with Reinforced Label Assignment},
+  booktitle = {EMNLP},
+  year      = {2019}
+}
+
+% ======================================================================
+% CLASS IMBALANCE / FOCAL LOSS / LONG-TAIL
+% ======================================================================
+
+@inproceedings{lin2017focal,
+  author    = {Tsung-Yi Lin and Priya Goyal and Ross Girshick and Kaiming He and Piotr Doll{\'a}r},
+  title     = {Focal Loss for Dense Object Detection},
+  booktitle = {ICCV},
+  year      = {2017}
+}
+
+@inproceedings{cui2019class,
+  author    = {Yin Cui and Menglin Jia and Tsung-Yi Lin and Yang Song and Serge Belongie},
+  title     = {Class-Balanced Loss Based on Effective Number of Samples},
+  booktitle = {CVPR},
+  year      = {2019}
+}
+
+@inproceedings{kang2020decoupling,
+  author    = {Bingyi Kang and Saining Xie and Marcus Rohrbach and Zhicheng Yan and Albert Gordo and Jiashi Feng and Yannis Kalantidis},
+  title     = {Decoupling Representation and Classifier for Long-Tailed Recognition},
+  booktitle = {ICLR},
+  year      = {2020}
+}
+
+@inproceedings{menon2021longtail,
+  author    = {Aditya Krishna Menon and Sadeep Jayasumana and Ankit Singh Rawat and Himanshu Jain and Andreas Veit and Sanjiv Kumar},
+  title     = {Long-tail learning via logit adjustment},
+  booktitle = {ICLR},
+  year      = {2021}
+}
+
+% ======================================================================
+% FOUNDATIONAL TRANSFORMERS
+% ======================================================================
+
+@inproceedings{devlin2019bert,
+  author    = {Jacob Devlin and Ming-Wei Chang and Kenton Lee and Kristina Toutanova},
+  title     = {{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding},
+  booktitle = {NAACL-HLT},
+  year      = {2019}
+}
+
+@article{vaswani2017attention,
+  author  = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
+  title   = {Attention Is All You Need},
+  journal = {NeurIPS},
+  year    = {2017}
+}
+
+@article{loshchilov2019adamw,
+  author  = {Ilya Loshchilov and Frank Hutter},
+  title   = {Decoupled Weight Decay Regularization},
+  journal = {ICLR},
+  year    = {2019}
+}
+
+% ======================================================================
+% ASRS / NTSB / AVIATION SAFETY NLP
+% ======================================================================
+
+@inproceedings{tanguy2016natural,
+  author    = {Ludovic Tanguy and Nikola Tulechki and Assaf Urieli and Eric Hermann and C{\'e}cile Raynal},
+  title     = {Natural Language Processing for Aviation Safety Reports: From Classification to Interactive Analysis},
+  booktitle = {Computers in Industry},
+  year      = {2016}
+}
+
+@article{abedin2010aviation,
+  author  = {Mohammad Al Abedin and Daniel J. Gruhl and Jeffrey Hampton and Claudio Pinhanez and others},
+  title   = {Automatic classification of incidents using heuristics and machine learning},
+  journal = {IEEE Intelligent Systems},
+  year    = {2010}
+}

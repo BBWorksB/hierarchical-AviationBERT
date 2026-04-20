@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "description": "Mapping of 28 ICAO ADREP occurrence categories to 6 parent groups used for hierarchical classification.",
+    "source": "ICAO / CAST-ICAO CICTT Occurrence Category Definitions (see: https://www.icao.int/safety/airnavigation/AIG/Pages/ADREP-Taxonomies.aspx and CAST-ICAO CICTT 'Phase of Flight Definitions and Usage Notes').",
+    "notes": "The 28 children are the subset of ADREP categories present in the filtered ASN 2000-2025 corpus after dropping classes with fewer than min_samples training examples. The 6-parent grouping follows the standard CICTT top-level classification by event phase and system.",
+    "parents": 6,
+    "children": 28
+  },
+  "parents": {
+    "AIRBORNE":    "In-flight events (cruise, climb, descent)",
+    "RUNWAY":      "Runway, takeoff, and landing events",
+    "GROUND":      "Ground operations",
+    "SYSTEM":      "Aircraft systems and powerplant",
+    "EXTERNAL":    "External and environmental factors",
+    "OPERATIONAL": "Air traffic management and other"
+  },
+  "child_to_parent": {
+    "LOC-I":   "AIRBORNE",
+    "AMAN":    "AIRBORNE",
+    "CFIT":    "AIRBORNE",
+    "LALT":    "AIRBORNE",
+    "MAC":     "AIRBORNE",
+    "TURB":    "AIRBORNE",
+    "UIMC":    "AIRBORNE",
+    "USOS":    "AIRBORNE",
+    "WSTRW":   "AIRBORNE",
+    "ICE":     "AIRBORNE",
+
+    "ARC":     "RUNWAY",
+    "RE":      "RUNWAY",
+    "RI":      "RUNWAY",
+    "CTOL":    "RUNWAY",
+
+    "GCOL":    "GROUND",
+    "RAMP":    "GROUND",
+    "EVAC":    "GROUND",
+
+    "SCF-NP":  "SYSTEM",
+    "SCF-PP":  "SYSTEM",
+    "FUEL":    "SYSTEM",
+    "F-NI":    "SYSTEM",
+    "F-POST":  "SYSTEM",
+    "CABIN":   "SYSTEM",
+
+    "BIRD":    "EXTERNAL",
+    "SEC":     "EXTERNAL",
+    "MED":     "EXTERNAL",
+
+    "ATM":     "OPERATIONAL",
+    "OTHR":    "OPERATIONAL"
+  },
+  "child_order": [
+    "LOC-I","AMAN","CFIT","LALT","MAC","TURB","UIMC","USOS","WSTRW","ICE",
+    "ARC","RE","RI","CTOL",
+    "GCOL","RAMP","EVAC",
+    "SCF-NP","SCF-PP","FUEL","F-NI","F-POST","CABIN",
+    "BIRD","SEC","MED",
+    "ATM","OTHR"
+  ]
+}

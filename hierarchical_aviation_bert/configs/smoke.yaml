@@ -1,0 +1,20 @@
+# Tiny-but-real config — runs a single head + backbone on a small sample
+# to verify the pipeline on CPU before paying for Colab GPU time.
+
+backbone: bert-base-uncased
+head: hierbert
+gamma: 2.0
+gate_lambda: 0.25
+max_length: 128
+batch_size: 8
+grad_accum: 1
+epochs: 1
+lr: 2e-5
+weight_decay: 0.01
+warmup_ratio: 0.05
+seed: 42
+fp16: false
+use_focal: true
+parent_loss_weight: 0.3
+tcr_weight: 0.0
+out: runs/smoke_test

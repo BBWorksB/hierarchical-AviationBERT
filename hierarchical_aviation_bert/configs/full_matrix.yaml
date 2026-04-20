@@ -1,0 +1,26 @@
+# Full experimental matrix for the final report.
+# Runs {FlatHead, ConstH, HierBERT, LearnableGate}
+#    x {BERT-base, Aviation-BERT}
+#    x {gamma = 0, 1, 2, 5}
+# = 32 runs. Trim as needed for your Colab GPU budget.
+
+heads:     [flat, consth, hierbert, learnablegate]
+backbones: [bert-base-uncased, ./aviation_bert_ckpt]
+gammas:    [0.0, 1.0, 2.0, 5.0]
+
+# Shared hyperparameters
+max_length:  256
+batch_size:  16
+grad_accum:  2
+epochs:      5
+lr:          2e-5
+weight_decay: 0.01
+warmup_ratio: 0.10
+seed:        42
+fp16:        true
+use_focal:   true
+
+# Head-specific defaults
+gate_lambda:        0.25
+parent_loss_weight: 0.3
+tcr_weight:         0.1
