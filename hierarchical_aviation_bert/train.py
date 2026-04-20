@@ -150,16 +150,12 @@ def train_one(args: TrainArgs) -> Dict[str, float]:
         weight_decay=args.weight_decay,
         warmup_ratio=args.warmup_ratio,
         eval_strategy="epoch",
-        save_strategy="epoch",
-        load_best_model_at_end=True,
-        metric_for_best_model="eval_macro_f1",
-        greater_is_better=True,
+        save_strategy="no",  # we evaluate on the test set at the end; no checkpoints needed
+        load_best_model_at_end=False,
         fp16=args.fp16 and torch.cuda.is_available(),
         logging_steps=50,
         report_to="none",
-        save_total_limit=1,
         seed=args.seed,
-        save_safetensors=False,  # allow non-contiguous tensors (bert-tiny quirk)
     )
 
     compute_metrics = _make_compute_metrics(
