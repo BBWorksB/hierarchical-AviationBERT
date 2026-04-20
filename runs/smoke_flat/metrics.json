@@ -1,0 +1,59 @@
+{
+  "config": {
+    "backbone": "prajjwal1/bert-tiny",
+    "head": "flat",
+    "gamma": 2.0,
+    "gate_lambda": 0.25,
+    "max_length": 128,
+    "batch_size": 8,
+    "grad_accum": 1,
+    "epochs": 1,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "seed": 42,
+    "data_csvs": [
+      "tmp_smoke/mini.csv"
+    ],
+    "taxonomy": "hierarchical_aviation_bert/data/icao_parent_map.json",
+    "out": "runs/smoke_flat",
+    "parent_loss_weight": 0.3,
+    "tcr_weight": 0.1,
+    "fp16": false,
+    "use_focal": true
+  },
+  "n_train": 136,
+  "n_val": 24,
+  "n_test": 41,
+  "child_names": [
+    "LOC-I",
+    "CFIT",
+    "LALT",
+    "UIMC",
+    "ARC",
+    "RE",
+    "RI",
+    "F-POST",
+    "MED",
+    "ATM",
+    "OTHR"
+  ],
+  "parent_names": [
+    "AIRBORNE",
+    "RUNWAY",
+    "GROUND",
+    "SYSTEM",
+    "EXTERNAL",
+    "OPERATIONAL"
+  ],
+  "metrics": {
+    "macro_f1": 0.05714285714285714,
+    "micro_f1": 0.14634146341463414,
+    "accuracy": 0.14634146341463414,
+    "minority_recall": NaN,
+    "tcr": NaN,
+    "macro_precision": 0.03428571428571429,
+    "macro_recall": 0.17142857142857143,
+    "eval_macro_f1": 0.05714285714285714
+  }
+}
